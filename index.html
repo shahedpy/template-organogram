@@ -3,62 +3,53 @@
   <head>
     <title>Organogram</title>
 	  <style>
-/* RESET STYLES & HELPER CLASSES
-–––––––––––––––––––––––––––––––––––––––––––––––––– */
-:root {
-  --level-1: #8dccad;
-  --level-2: #f5cc7f;
-  --level-3: #7b9fe0;
-  --level-4: #f27c8d;
-  --black: black;
-}
+      :root {
+        --level-1: #8dccad;
+        --level-2: #f5cc7f;
+        --level-3: #7b9fe0;
+        --level-4: #f27c8d;
+        --black: black;
+      }
+      ol {
+        list-style: none;
+      }
+      .container.test_alien {
+          text-align: center;
+      }
+      .container {
+        max-width: 1000px;
+        padding: 0 10px;
+        margin: 0 auto;
+      }
+      .rectangle {
+        position: relative;
+        padding: 20px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+      }
 
-ol {
-  list-style: none;
-}
-.container.test_alien {
-    text-align: center;
-}
-.container {
-  max-width: 1000px;
-  padding: 0 10px;
-  margin: 0 auto;
-}
+      /* LEVEL-1 STYLES –––––––––––––––––––––––––––––––––––––––––––––––––– */
+      .level-1 {
+        width: 50%;
+        margin: 0 auto 40px;
+        background: var(--level-1);
+      }
+      .level-1::before {
+        content: "";
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 2px;
+        height: 20px;
+        background: var(--black);
+      }
 
-.rectangle {
-  position: relative;
-  padding: 20px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
-}
-
-
-/* LEVEL-1 STYLES
-–––––––––––––––––––––––––––––––––––––––––––––––––– */
-.level-1 {
-  width: 50%;
-  margin: 0 auto 40px;
-  background: var(--level-1);
-}
-
-.level-1::before {
-  content: "";
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 2px;
-  height: 20px;
-  background: var(--black);
-}
-
-
-/* LEVEL-2 STYLES
-–––––––––––––––––––––––––––––––––––––––––––––––––– */
-.level-2-wrapper {
-  position: relative;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-}
+      /* LEVEL-2 STYLES –––––––––––––––––––––––––––––––––––––––––––––––––– */
+      .level-2-wrapper {
+        position: relative;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+      }
 
 .level-2-wrapper::before {
   content: "";
@@ -247,8 +238,7 @@ ol {
 }
 
 
-/* FOOTER
-–––––––––––––––––––––––––––––––––––––––––––––––––– */
+/* FOOTER –––––––––––––––––––––––––––––––––––––––––––––––––– */
 .page-footer {
   position: fixed;
   right: 0;
@@ -264,16 +254,13 @@ ol {
 </style>
 
   </head>
-  <body>	{% url 'project:dpp_update' object.pk as dpp_update %}
-    {% url 'project:project_list' as list_url %}
-	<a href="{{ list_url }}" title="List View" class="{% if request.path == list_url %}active{% endif %}"><i class="icon-th-list"></i> Project List</a>
-	<a href="{{ dpp_update }}" title="DPP update" class="{% if request.path == dpp_update %}active{% endif %}"><i class="icon-th-list"></i> DPP Update</a>
-{% endblock %}
-{% block content  %}
+  <body>
+	  <a href="{{ list_url }}" title="List View" class="{% if request.path == list_url %}active{% endif %}"><i class="icon-th-list"></i> Project List</a>
+	  <a href="{{ dpp_update }}" title="DPP update" class="{% if request.path == dpp_update %}active{% endif %}"><i class="icon-th-list"></i> DPP Update</a>
     <div class="container test_alien">
-  <h1 class="level-1 rectangle">প্রধান প্রকৌশলী <br>{% if site_info.department %}{{ site_info.department }}{% endif %} </h1>
-  <ol class="level-2-wrapper">
-    <li>
+    <h1 class="level-1 rectangle">প্রধান প্রকৌশলী <br>{% if site_info.department %}{{ site_info.department }}{% endif %} </h1>
+    <ol class="level-2-wrapper">
+      <li>
       <h2 class="level-2 rectangle">PD A</h2>
       <ol class="level-3-wrapper">
         <li>
