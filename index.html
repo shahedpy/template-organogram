@@ -342,24 +342,5 @@
 
   </ol>
 </div>
-
-{% endblock content  %}
-
-
-{% block js_extra %}
-<script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
-<script>
-    $(document).ready(function () {
-        $("#id_date").datepicker({
-        changeMonth: true,
-        changeYear: true,
-        yearRange: "-90:+10",
-        dateFormat: 'dd/mm/yy'
-        });
-    });
-</script>
-<script src="{% static 'dashboard/js/app.js' %}"></script>
-{% endblock js_extra %}
-
   </body>
 </html>
