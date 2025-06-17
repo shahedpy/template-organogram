@@ -2,13 +2,7 @@
 <html>
   <head>
     <title>Organogram</title>
-  </head>
-  <body>
-    {% extends 'dashboard/base.html' %}
-{% load static %}
-{% load widget_tweaks %}
-{% block css_extra %}
-<style>
+	  <style>
 /* RESET STYLES & HELPER CLASSES
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 :root {
@@ -268,7 +262,9 @@ ol {
   margin-left: 4px;
 }
 </style>
-	{% url 'project:dpp_update' object.pk as dpp_update %}
+
+  </head>
+  <body>	{% url 'project:dpp_update' object.pk as dpp_update %}
     {% url 'project:project_list' as list_url %}
 	<a href="{{ list_url }}" title="List View" class="{% if request.path == list_url %}active{% endif %}"><i class="icon-th-list"></i> Project List</a>
 	<a href="{{ dpp_update }}" title="DPP update" class="{% if request.path == dpp_update %}active{% endif %}"><i class="icon-th-list"></i> DPP Update</a>
